@@ -20,7 +20,7 @@
     <script>
         document.getElementById('scrape').addEventListener('click', function() {
             var keyword = document.getElementById('keyword').value;
-            fetch('/api/scrape?keyword=' + keyword)
+            fetch('http://localhost:3000/api/scrape?keyword=' + keyword)
                 .then(response => response.json())
                 .then(data => {
                     var results = document.getElementById('results');
