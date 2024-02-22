@@ -12,4 +12,9 @@ Este é um raspador da web simples para a Amazon usando Node.js, Express, Axios,
 
 ## Uso
 
-Abra um navegador e navegue até `http://localhost:3000`. Digite uma palavra-chave de pesquisa e clique em: Iniciar raspagem
+Inicialize a api 'node app.js' . 
+Abra o arquivo index.html - Digite uma palavra-chave de pesquisa e clique em: Iniciar raspagem 
+
+Obs. Como é uma resposta assíncrona pode ou nao ter exito na raspagem. Parametro que utilizei nos teste(headsets).
+
+![Alt text](image.png)
