@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Amazon Scraper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Amazon Scraper</h1>
+    <input type="text" id="keyword" placeholder="Digite a palavra-chave de pesquisa">
+    <button id="scrape">Iniciar raspagem</button>
+    <div id="results"></div>
+
+    <script>
+        document.getElementById('scrape').addEventListener('click', function() {
+            var keyword = document.getElementById('keyword').value;
+            fetch('/api/scrape?keyword=' + keyword)
+                .then(response => response.json())
+                .then(data => {
+                    var results = document.getElementById('results');
+                    results.innerHTML = '';
+                    data.forEach(item => {
+                        var div = document.createElement('div');
+                        div.innerHTML = `
+                            <h2>${item.title}</h2>
+                            <p>Classificação: ${item.rating}</p>
+                            <p>Número de avaliações: ${item.reviews}</p>
+                            <img src="${item.image}" alt="${item.title}">
+                        `;
+                        results.appendChild(div);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                });
+        });
+    </script>
+</body>
+</html>
